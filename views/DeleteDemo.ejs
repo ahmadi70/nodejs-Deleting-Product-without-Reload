@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+    <div class="Demo" style="padding: 1%;">
+        <%if(products.length>0){
+            for(p of products){
+                %>
+                <div style="width: 200px; height: 200px; box-shadow: 1px 1px 3px black; float: left; margin: 1%; padding: 1%;">
+                    <h1><%= p.title %></h1>
+                    <p><%= p.description %></p>
+                    <input type="hidden" name="productId" value="<%= p._id %>">
+                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                    <button class="btn" onclick="deleteProduct(this)">delete</button>
+                </div>
+                <%
+            }
+        }%>
+        
+    </div>
+
+<script src="/js/admin.js"></script>
+<%- include('includes/end.ejs') %>
